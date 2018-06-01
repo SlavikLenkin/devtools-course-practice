@@ -9,7 +9,6 @@
 #include <iterator>
 
 #include "include/Calculation_Rent_App.h"
-// #include "Calculation_Rent_App.h"
 
 using ::testing::internal::RE;
 using std::vector;
@@ -57,7 +56,7 @@ TEST_F(Calculation_Rent_App_Test, Is_Checking_Number_Of_Arguments) {
 }
 
 TEST_F(Calculation_Rent_App_Test, Can_Detect_Wrong_Number_Format) {
-    vector<string> args = {"1", "three", "2", "a"};
+    vector<string> args = {"1", "three", "2", "-aph"};
 
     Act(args);
 
@@ -73,62 +72,62 @@ TEST_F(Calculation_Rent_App_Test, Can_Detect_Wrong_Operation_Format) {
 }
 
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Accum_Year_Postnum_Hard_Rate) {
-    vector<string> args = {"50", "2", "3", "1"};
+    vector<string> args = {"50", "2", "3", "-aph"};
 
     Act(args);
 
-    Assert("Postnumerando hard rate = 250");
+    Assert("Accumulated yearly postnumerando hard rate = 250");
 }
 
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Accum_Year_Postnum_Easy_Rate) {
-    vector<string> args = {"150.4", "20", "10", "2"};
+    vector<string> args = {"150.4", "20", "10", "-ape"};
 
     Act(args);
 
-    Assert("Postnumerando easy rate = 288768");
+    Assert("Accumulated yearly postnumerando easy rate = 288768");
 }
 
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Accum_Year_Prenum_Hard_Rate) {
-    vector<string> args = {"100", "5", "2", "3"};
+    vector<string> args = {"100", "5", "2", "-aprh"};
 
     Act(args);
 
-    Assert("Prenumerando hard rate = 36300");
+    Assert("Accumulated yearly prenumerando hard rate = 36300");
 }
 
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Accum_Year_Prenum_Easy_Rate) {
-    vector<string> args = {"1200", "10", "5", "4"};
+    vector<string> args = {"1200", "10", "5", "-apre"};
 
     Act(args);
 
-    Assert("Prenumerando easy rate = 342000");
+    Assert("Accumulated yearly prenumerando easy rate = 342000");
 }
 
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Modern_Year_Postnum_Hard_Rate) {
-    vector<string> args = {"80", "1", "4", "5"};
+    vector<string> args = {"80", "1", "4", "-mph"};
 
     Act(args);
 
-    Assert("Modern year postnumerando hard rate = 16");
+    Assert("Modern yearly postnumerando hard rate = 16");
 }
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Modern_Year_Postnum_Easy_Rate) {
-    vector<string> args = {"10000", "2", "10", "6"};
+    vector<string> args = {"10000", "2", "10", "-mpe"};
 
     Act(args);
 
-    Assert("Modern year postnumerando easy rate = 1385.28");
+    Assert("Modern yearly postnumerando easy rate = 1385.28");
 }
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Modern_Year_Prenum_Hard_Rate) {
-    vector<string> args = {"50", "200", "3", "7"};
+    vector<string> args = {"50", "200", "3", "-mprh"};
 
     Act(args);
 
-    Assert("Modern year prenumerando hard rate = 66.6667");
+    Assert("Modern yearly prenumerando hard rate = 66.6667");
 }
 TEST_F(Calculation_Rent_App_Test, Can_Calc_Rent_Modern_Year_Prenum_Easy_Rate) {
-    vector<string> args = {"50", "2", "30000", "8"};
+    vector<string> args = {"50", "2", "30000", "-mpre"};
 
     Act(args);
 
-    Assert("Modern year prenumerando easy rate = 50");
+    Assert("Modern yearly prenumerando easy rate = 50");
 }

@@ -2,7 +2,6 @@
 
 #include <cmath>
 #include"include/Calculation_Rent.h"
-// #include"Calculation_Rent.h"
 
 Calculation_Rent::Calculation_Rent(double am_pay, double re_term,
     double int_rate) : amount_payment(am_pay), rent_term(re_term),

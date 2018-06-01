@@ -3,7 +3,6 @@
 #include <gtest/gtest.h>
 
 #include "include/Calculation_Rent.h"
-// #include "Calculation_Rent.h"
 
 TEST(Calc_Rent_Test, Can_Create_Object) {
     // Assert and Arrange and Act

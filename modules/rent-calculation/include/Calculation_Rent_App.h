@@ -18,7 +18,7 @@ class Calculation_Rent_App {
         double amount_payment;
         double rent_term;
         double interest_rate;
-        int operation;
+        std::string operation;
     } Arguments;
 };
 
