@@ -4,7 +4,7 @@
 
 #include "include/Calculation_Rent.h"
 
-TEST(Calculation_Rent_Test, Can_Create_Object) {
+TEST(Calc_Rent_Test, Can_Create_Object) {
     // Assert and Arrange and Act
     ASSERT_NO_THROW(Calculation_Rent rent_tmp);
 }

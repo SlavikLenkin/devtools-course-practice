@@ -1,0 +1,108 @@
+#############################################
+##### Testing
+#############################################
+
+set(prefix "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Run
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Run PROPERTIES
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Print_Help_Without_Arguments
+    COMMAND ${APPLICATION}
+)
+set_tests_properties (${prefix}_can_Print_Help_Without_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "This is a rent calculator"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Check_Number_Of_Arguments
+    COMMAND ${APPLICATION} 1 2
+)
+set_tests_properties (${prefix}_can_Check_Number_Of_Arguments PROPERTIES
+    PASS_REGULAR_EXPRESSION "ERROR: Should be 4 arguments."
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Number_Format
+    COMMAND ${APPLICATION} 1 three 1 -aph
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Number_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong number format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Detect_Wrong_Operation_Format
+    COMMAND ${APPLICATION} 1 2 3 trash
+)
+set_tests_properties (${prefix}_can_Detect_Wrong_Operation_Format PROPERTIES
+    PASS_REGULAR_EXPRESSION "Wrong operation format!"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Accum_Year_Postnum_Hard_Rate
+    COMMAND ${APPLICATION} 50 2 3 -aph
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Accum_Year_Postnum_Hard_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Accumulated yearly postnumerando hard rate = 250"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Accum_Year_Postnum_Easy_Rate
+    COMMAND ${APPLICATION} 150.4 20 10 -ape
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Accum_Year_Postnum_Easy_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Accumulated yearly postnumerando easy rate = 288768"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Accum_Year_Prenum_Hard_Rate
+    COMMAND ${APPLICATION} 100 5 2 -aprh
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Accum_Year_Prenum_Hard_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Accumulated yearly prenumerando hard rate = 36300"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Accum_Year_Prenum_Easy_Rate
+    COMMAND ${APPLICATION} 1200 10 5 -apre
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Accum_Year_Prenum_Easy_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Accumulated yearly prenumerando easy rate = 342000"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Modern_Year_Postnum_Hard_Rate
+    COMMAND ${APPLICATION} 80 1 4 -mph
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Modern_Year_Postnum_Hard_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Modern yearly postnumerando hard rate = 16"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Modern_Year_Postnum_Easy_Rate
+    COMMAND ${APPLICATION} 10000 2 10 -mpe
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Modern_Year_Postnum_Easy_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Modern yearly postnumerando easy rate = 1385.28"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Modern_Year_Prenum_Hard_Rate
+    COMMAND ${APPLICATION} 50 200 3 -mprh
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Modern_Year_Prenum_Hard_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Modern yearly prenumerando hard rate = 66.6667"
+    LABELS "${MODULE}")
+
+add_test(
+    NAME ${prefix}_can_Calc_Rent_Modern_Year_Prenum_Easy_Rate
+    COMMAND ${APPLICATION} 50 2 30000 -mpre
+)
+set_tests_properties (${prefix}_can_Calc_Rent_Accum_Year_Prenum_Easy_Rate PROPERTIES
+    PASS_REGULAR_EXPRESSION "Modern yearly prenumerando easy rate = 50"
+    LABELS "${MODULE}")
